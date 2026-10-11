@@ -63,27 +63,44 @@
 
 ## 安装
 
-### Claude Code
+**安装不需要 GitHub 账号，不需要登录，克隆公开仓库也不用认证。** 只有往仓库里推送才需要凭据。
+
+本技能是完整离线包 —— 正文已经打包在里面，装完不联网、不克隆、不下载即可检索。
+
+### 方式一：直接下载拷贝（推荐，零依赖）
+
+在 https://github.com/Primezyx/life-decision-guide 点 **Code → Download ZIP**，解压后把 `life-decision-guide` 整个文件夹拷进你的 skill 目录：
+
+| 客户端 | skill 目录 |
+| --- | --- |
+| Claude Code | `~/.claude/skills/life-decision-guide/` |
+| Codex | `~/.agents/skills/life-decision-guide/` |
+| WorkBuddy | `~/.workbuddy/skills/life-decision-guide/` |
+
+### 方式二：克隆本仓库
 
 ```bash
-git clone https://github.com/<你的账号>/life-decision-guide.git ~/.claude/skills/life-decision-guide
+git clone https://github.com/Primezyx/life-decision-guide.git ~/.workbuddy/skills/life-decision-guide
 ```
 
-### Codex
+Windows PowerShell：
 
-```bash
-git clone https://github.com/<你的账号>/life-decision-guide.git ~/.agents/skills/life-decision-guide
+```powershell
+git clone https://github.com/Primezyx/life-decision-guide.git "$env:USERPROFILE\.workbuddy\skills\life-decision-guide"
 ```
 
-### 通用
+### 装完验证
 
-整个目录拷进你的 skill 目录即可：
+skill 目录里应该有 34 篇正文、677 个条目：
 
 ```bash
-cp -r life-decision-guide/* ~/.claude/skills/life-decision-guide/
+ls ~/.workbuddy/skills/life-decision-guide/references/book/*.md | wc -l   # 应为 34
+grep -rh '^### ' ~/.workbuddy/skills/life-decision-guide/references/book | wc -l   # 应为 677
 ```
 
 装完直接问「每天通勤两小时值不值」「朋友让我替他担保，签不签」就会触发；也可以显式说「用 life-decision-guide 回答」。
+
+> 想更新到最新版，重下 ZIP 覆盖，或 `git pull`。
 
 ---
 
